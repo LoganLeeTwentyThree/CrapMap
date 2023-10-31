@@ -315,7 +315,7 @@
                         <ImageView
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            app:srcCompat="@drawable/sample_toilet_02_JPL" />
+                            app:srcCompat="@drawable/sample_toilet_02_jpl" />
                     </androidx.cardview.widget.CardView>
                     <!--name-->
                     <!--                    spacer-->
