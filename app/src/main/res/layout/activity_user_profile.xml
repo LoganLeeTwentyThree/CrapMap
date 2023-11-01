@@ -163,7 +163,7 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/tuesdayLine" />
     <View
-        android:id="@+id/thurdsdayLine"
+        android:id="@+id/thursdayLine"
         android:layout_width="10dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
@@ -177,7 +177,7 @@
         android:layout_marginStart="20dp"
         android:background="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toEndOf="@+id/thurdsdayLine" />
+        app:layout_constraintStart_toEndOf="@+id/thursdayLine" />
     <View
         android:id="@+id/saturdayLine"
         android:layout_width="10dp"
