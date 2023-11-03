@@ -8,49 +8,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.crapmap.databinding.ActivityUserProfileBinding;
+//import androidx.core.view.WindowCompat;
+//import androidx.navigation.NavController;
+//import androidx.navigation.Navigation;
+//import androidx.navigation.ui.AppBarConfiguration;
+//import androidx.navigation.ui.NavigationUI;
+//
+//import com.example.crapmap.databinding.ActivityUserProfileBinding;
 
 /**
  * @author nat
  */
 public class UserProfile extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityUserProfileBinding binding;
+//    private AppBarConfiguration appBarConfiguration;
+//    private ActivityUserProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_profile);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
-            }
-        });
+//        binding = ActivityUserProfileBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//
+//        setSupportActionBar(binding.toolbar);
+//
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_profile);
+//        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//
+//        binding.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAnchorView(R.id.fab)
+//                        .setAction("Action", null).show();
+//            }
+//        });
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_profile);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_user_profile);
+//        return NavigationUI.navigateUp(navController, appBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 }
