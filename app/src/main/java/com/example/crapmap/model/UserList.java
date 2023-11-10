@@ -33,6 +33,10 @@ public class UserList {
         return null;
     }
 
+    public File getCsvFile() {
+        return csvFile;
+    }
+
     // Example of linear search
     public boolean contains(UserProfile userProfile) {
         return userList.contains(userProfile);
