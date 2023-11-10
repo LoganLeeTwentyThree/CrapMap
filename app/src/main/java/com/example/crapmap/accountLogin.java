@@ -1,11 +1,11 @@
 package com.example.crapmap;
 
 import androidx.appcompat.app.AppCompatActivity;
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import android.os.Bundle;
+import com.example.crapmap.model.UserList;
 
 import com.example.crapmap.R;
 
