@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.toilet_list_button) {
             Log.d("MainActivity.java", "clicked toilet list button");
             Intent intent = new Intent(this, ToiletList.class);
+            Log.d("MainActivity.java", "AAAAAAAAAAAA");
             startActivity(intent);
         }
 
