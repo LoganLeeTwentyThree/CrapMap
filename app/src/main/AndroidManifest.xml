@@ -34,6 +34,10 @@
             android:name=".accountLogin"
             android:exported="true" >
         </activity>
+        <activity
+            android:name=".accountSignup"
+            android:exported="true" >
+        </activity>
     </application>
 
 </manifest>

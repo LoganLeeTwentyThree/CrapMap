@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.example.crapmap.model.UserList;
+import android.widget.Button;
+
 
 public class accountSignup extends AppCompatActivity {
 
@@ -35,5 +41,19 @@ public class accountSignup extends AppCompatActivity {
                 }
             }
         }
+
+        Button backButton = findViewById(R.id.back_btn);
+        Button submitButton = findViewById(R.id.submit_button);
+
+        backButton.setOnClickListener((View.OnClickListener) v -> {
+            Log.d("accountSignup.java", "clicked back button");
+            finish();
+        });
+        submitButton.setOnClickListener((View.OnClickListener) v -> {
+            Log.d("accountSignup.java", "clicked submit button");
+            // TODO: MAKE NEW USER FROM USER PROVIDE DATA
+            Log.w("accountSignup.java", "TODO: make new user from user provided data");
+            finish();
+        });
     }
 }
