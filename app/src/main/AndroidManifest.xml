@@ -19,6 +19,9 @@
             android:name=".ToiletListActivity"
             android:exported="true" />
         <activity
+            android:name=".AddToiletActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
