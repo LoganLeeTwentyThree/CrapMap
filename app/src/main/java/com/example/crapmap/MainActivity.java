@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.crapmap.model.ToiletProfile;
 
@@ -14,8 +17,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, ToiletProfileActivity.class);
-        intent.putExtra("Toilet", 1);
-        startActivity(intent);
+        Button userSelectButton = findViewById(R.id.userSelectButton);
+        Button ProfileButton = findViewById(R.id.profileButton);
+        Button toiletListButton = findViewById(R.id.toiletListButton);
+        Button mapButton = findViewById(R.id.mapButton);
+        userSelectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("MainActivity.java", "clicked userSelectButton");
+                 Intent intent = new Intent(MainActivity.this, accountLogin.class);
+                startActivity(intent);
+            }
+        });
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("MainActivity.java", "clicked ProfileButton");
+                Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        toiletListButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("MainActivity.java", "clicked toiletListButton");
+                Intent intent = new Intent(MainActivity.this, ToiletListActivity.class);
+                startActivity(intent);
+            }
+        });
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("MainActivity.java", "clicked mapButton");
+                // TODO: make mapview activity class thing
+                // Intent intent = new Intent(MainActivity.this, ToiletListActivity.class);
+                // startActivity(intent);
+            }
+        });
     }
 }
