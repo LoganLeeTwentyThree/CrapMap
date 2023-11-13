@@ -13,6 +13,15 @@
         android:theme="@style/Theme.CrapMap"
         tools:targetApi="31">
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ToiletListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddToiletActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -29,6 +38,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            android:name=".accountLogin"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name=".accountSignup"
+            android:exported="true" >
         </activity>
     </application>
 
