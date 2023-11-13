@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import android.os.Bundle;
 
+import com.example.crapmap.model.UserList;
+
 public class accountSignup extends AppCompatActivity {
 
     @Override
@@ -14,7 +16,7 @@ public class accountSignup extends AppCompatActivity {
         setContentView(R.layout.activity_account_signup);
 
 
-        public class AddUser_Activity {
+    }
 
             // Logic to take in info from fields and create an entry in the user list CSV
             public void addUserToCSV(UserList userList, String name, String password, int id) {
@@ -33,5 +35,4 @@ public class accountSignup extends AppCompatActivity {
                 }
             }
         }
-    }
-}
+
