@@ -42,5 +42,9 @@ public class UserList {
         return userList.contains(userProfile);
     }
 
+    public String getCsvFile() {
+        return null;
+    }
+
     // Other methods related to adding, removing, and manipulating user profiles
 }

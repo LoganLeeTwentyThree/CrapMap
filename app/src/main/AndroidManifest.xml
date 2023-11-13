@@ -13,14 +13,11 @@
         android:theme="@style/Theme.CrapMap"
         tools:targetApi="31">
         <activity
-            android:name=".UserProfileActivity"
-            android:exported="true" />
+            android:name=".accountSignup"
+            android:exported="false" />
         <activity
-            android:name=".ToiletListActivity"
-            android:exported="true" />
-        <activity
-            android:name=".AddToiletActivity"
-            android:exported="true" />
+            android:name=".accountLogin"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,21 +26,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ToiletProfileActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.TOILETPROFILE" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            android:name=".accountLogin"
-            android:exported="true" >
-        </activity>
-        <activity
-            android:name=".accountSignup"
-            android:exported="true" >
         </activity>
     </application>
 
