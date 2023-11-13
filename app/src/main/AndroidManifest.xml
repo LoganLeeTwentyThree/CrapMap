@@ -31,6 +31,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ToiletProfileActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TOILETPROFILE" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             android:name=".accountLogin"
             android:exported="true" >
         </activity>

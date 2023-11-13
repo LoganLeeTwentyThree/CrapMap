@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@color/white">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="250dp"
+                android:id="@+id/review1Image"
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/profilePic"
+                    tools:srcCompat="@drawable/johnsmith" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:id="@+id/reviewName"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/review1Image"
+                android:text="John Smith"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textSize="10sp"
+                android:layout_height="20dp"
+                android:id="@+id/reviewText"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/review1Image"
+                android:layout_below="@id/reviewName"
+                android:text="This toilet is utterly preposterous!"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@android:drawable/btn_star_big_on"
+                android:id="@+id/reviewStar1"
+                android:layout_toRightOf="@id/reviewName"
+                android:layout_above="@id/reviewText"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@android:drawable/btn_star_big_off"
+                android:id="@+id/reviewStar2"
+                android:layout_toRightOf="@id/reviewStar1"
+                android:layout_above="@id/reviewText"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@android:drawable/btn_star_big_off"
+                android:id="@+id/reviewStar3"
+                android:layout_toRightOf="@id/reviewStar2"
+                android:layout_above="@id/reviewText"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@android:drawable/btn_star_big_off"
+                android:id="@+id/reviewStar4"
+                android:layout_toRightOf="@id/reviewStar3"
+                android:layout_above="@id/reviewText"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@android:drawable/btn_star_big_off"
+                android:id="@+id/reviewStar5"
+                android:layout_toRightOf="@id/reviewStar4"
+                android:layout_above="@id/reviewText"/>
+        </RelativeLayout>
+
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
