@@ -1,69 +1,94 @@
 package com.example.crapmap.model;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
-    private File csvFile;
     private ArrayList<UserProfile> userList;
+    private static boolean firstLoad = true;
 
-    public UserList(String filePath, Context Loading) throws IOException {
-        loadUserList(Loading, filePath);
-        this.csvFile = new File(filePath);
-        if (!csvFile.exists()) {
-            csvFile.createNewFile();
-        }
+    private Context context;
+    public UserList(Context loading) throws IOException {
+        context = loading;
+        loadUserList("UserList.csv");
         this.userList = new ArrayList<>();
+
+
     }
 
-    public UserProfile getByName(String name) {
+    public UserProfile getUserByName(String name) throws NotFoundException{
         for (UserProfile user : userList) {
             if (user.getName().equals(name)) {
                 return user;
             }
         }
-        return null;
+        throw new NotFoundException("No user matches given name");
     }
 
-    public UserProfile getById(int id) {
+    public UserProfile getUserById(int id) throws NotFoundException {
         for (UserProfile user : userList) {
             if (user.getId() == id) {
                 return user;
             }
         }
-        return null;
+        throw new NotFoundException("No user matches given ID");
     }
 
-    public void loadUserList(Context Loading, String Filename) {
+    private void loadUserList(String Filename) {
         try {
 
-            AssetManager manager = Loading.getAssets();
-            InputStream csvReader = manager.open(Filename);
+            File file = new File(context.getFilesDir(), "UserList.csv");
+            Scanner scanner = new Scanner(file);
+            while ((scanner.hasNext())) {
+                String row = scanner.nextLine();
+                String[] tokens = row.split(",");
+                int[] timeSpentByDay = new int[7];
+                for (int i = 2; i < 9; i++) {
+                    timeSpentByDay[i - 2] = Integer.parseInt(tokens[i]);
+                }
 
-            Scanner scanr = new Scanner(csvReader);
-            while ((scanr.hasNext()) ) {
-                String row = scanr.nextLine();
-                String[] data = row.split(",");
-                // Display the data in the UI or console
-                System.out.println("Name: " + data[0] + ", ID: " + data[1]);
+                //name, id, timeSpent0, 1, ...7
+                UserProfile newUser = new UserProfile(tokens[0], Integer.parseInt(tokens[1]), timeSpentByDay);
+                userList.add(newUser);
+
+                if(!scanner.hasNext())//if this is the last recorded user in the csv
+                {
+                    if( firstLoad )// and this is the first time the UserList has been accessed this process
+                    {
+                        UserProfile.setMostRecentID(Integer.parseInt(tokens[1]));//set the most recent id
+                    }
+                }
             }
-            csvReader.close();
+            scanner.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
-
-    // Example of linear search
-    public boolean contains(UserProfile userProfile) {
-        return userList.contains(userProfile);
     }
 
+    public void addUserToCSV(UserProfile userProfile) {
+        try {
+            File file = new File(context.getFilesDir(), "UserList.csv");
+            FileWriter writer = new FileWriter(file);
 
+            String toAdd = userProfile.getName();
+            toAdd += "," + userProfile.getId();
 
-    // Other methods related to adding, removing, and manipulating user profiles
+            for( int i = 0; i < 7; i++ )
+            {
+                toAdd += "," + userProfile.getTimeSpent()[i];
+            }
+
+            writer.append(toAdd);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<UserProfile> getUserList() {
+        return userList;
+    }
 }
