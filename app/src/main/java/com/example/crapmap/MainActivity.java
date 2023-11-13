@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
         userSelectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked userSelectButton");
-                // TODO: make userselect activity class to launch
-                // Intent intent = new Intent(MainActivity.this, ???);
-                //startActivity(intent);
+                 Intent intent = new Intent(MainActivity.this, accountLogin.class);
+                startActivity(intent);
             }
         });
         ProfileButton.setOnClickListener(new View.OnClickListener() {
