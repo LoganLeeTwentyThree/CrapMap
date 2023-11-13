@@ -19,9 +19,9 @@
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:="@id/title"
+        android:layout_width="351dp"
+        android:layout_height="560dp"
+
         android:scaleX="2"
         android:scaleY="2"
 
