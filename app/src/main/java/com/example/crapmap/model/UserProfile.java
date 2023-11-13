@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 public class UserProfile {
     private String name;
-    private String password;
-    private ArrayList<String> timeSpent;
+    private int[] timeSpent;
     private int id;
+    private static int mostRecentID;//for assigning new ids to new users
 
-    public UserProfile(String name, String password, int id) {
+    public UserProfile(String name, int id, int[] timeSpent) {
         this.name = name;
-        this.password = password;
         this.id = id;
-        this.timeSpent = new ArrayList<>();
+        this.timeSpent = timeSpent;
     }
 
-    // Getters and setters for the fields
     public String getName() {
         return name;
     }
@@ -24,5 +22,23 @@ public class UserProfile {
         return id;
     }
 
+    public int[] getTimeSpent() {
+        return timeSpent;
+    }
+
+    public static void setMostRecentID(int id)
+    {
+        mostRecentID = id;
+    }
+
+    public static int getID()
+    {
+        mostRecentID++;
+        return mostRecentID;
+    }
+
+
+
     // Other methods related to time spent, password management, etc.
+
 }

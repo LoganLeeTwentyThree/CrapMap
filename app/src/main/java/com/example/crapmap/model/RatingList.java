@@ -5,6 +5,7 @@ import static java.lang.System.in;
 import android.content.Context;
 import android.content.res.AssetManager;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -53,22 +54,27 @@ public class RatingList extends List
     {
         try
         {
-            InputStream fileIn;
-            AssetManager manager = context.getAssets();
-            fileIn = manager.open("RatingsList.csv");
+            File file = new File(context.getFilesDir(), "RatingsList.csv");
+            Scanner scanner = new Scanner(file);
 
-            Scanner scanner = new Scanner(in);
-
-            UserList userList = new UserList();
+            UserList userList = new UserList(context);
             ToiletList toiletList = new ToiletList();
             while( scanner.hasNext() )
             {
                 String line = scanner.nextLine();
                 String[] tokens = line.split(",");
 
-                UserProfile user = userList.getUserByID(Integer.parseInt(tokens[0]));
-                ToiletProfile toilet = toiletList.getToiletByID(Integer.parseInt(tokens[1]));
-                allRatings.add( new Rating(user, toilet, Integer.parseInt(tokens[2]), tokens[3]));
+                try
+                {
+                    UserProfile user = userList.getUserById(Integer.parseInt(tokens[0]));
+                    ToiletProfile toilet = toiletList.getToiletByID(Integer.parseInt(tokens[1]));
+                    allRatings.add( new Rating(user, toilet, Integer.parseInt(tokens[2]), tokens[3]));
+                }catch(Exception e)
+                {
+                    System.out.println("FILE ERROR");
+                    e.printStackTrace();
+                }
+
 
             }
 
