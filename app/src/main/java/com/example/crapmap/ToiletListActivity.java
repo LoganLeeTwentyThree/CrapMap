@@ -38,6 +38,5 @@ public class ToiletListActivity extends AppCompatActivity {
         });
 
 
-        // TODO: find a way to procedurally add buttons to each element in the list, and set it up so they'll launch the respective profiles
     }
 }

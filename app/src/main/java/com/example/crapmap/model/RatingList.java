@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class RatingList extends List
     {
         allRatings = new ArrayList<Rating>();
         this.context = context;
+        load();
     }
 
     public Rating getRatingByUser( UserProfile user ) throws NotFoundException
@@ -54,11 +56,14 @@ public class RatingList extends List
     {
         try
         {
-            File file = new File(context.getFilesDir(), "RatingsList.csv");
+            File file = new File(context.getFilesDir(), "RatingList.csv");
+            file.createNewFile();//in case it doesn't exist
             Scanner scanner = new Scanner(file);
 
+
+
             UserList userList = new UserList(context);
-            ToiletList toiletList = new ToiletList();
+            ToiletList toiletList = new ToiletList(context);
             while( scanner.hasNext() )
             {
                 String line = scanner.nextLine();
@@ -68,7 +73,7 @@ public class RatingList extends List
                 {
                     UserProfile user = userList.getUserById(Integer.parseInt(tokens[0]));
                     ToiletProfile toilet = toiletList.getToiletByID(Integer.parseInt(tokens[1]));
-                    allRatings.add( new Rating(user, toilet, Integer.parseInt(tokens[2]), tokens[3]));
+                    allRatings.add( new Rating(user, toilet, Float.parseFloat(tokens[2]), tokens[3]));
                 }catch(Exception e)
                 {
                     System.out.println("FILE ERROR");
@@ -102,5 +107,25 @@ public class RatingList extends List
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    public void addRatingToCSV(Rating rating) {
+        try {
+            File file = new File(context.getFilesDir(), "RatingList.csv");
+            FileWriter writer = new FileWriter(file, true);
+
+            allRatings.add(rating);
+
+            String toAdd = rating.getRater().getId() + "";//bleh
+            toAdd += "," + rating.getRatee().getID();
+            toAdd += "," + rating.getNumStars();
+            toAdd += "," + rating.getReview();
+
+            writer.append(toAdd + "\n");
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

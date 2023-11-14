@@ -7,11 +7,20 @@ public class UserProfile {
     private int[] timeSpent;
     private int id;
     private static int mostRecentID;//for assigning new ids to new users
+    private static UserProfile currentUser;
 
     public UserProfile(String name, int id, int[] timeSpent) {
         this.name = name;
         this.id = id;
         this.timeSpent = timeSpent;
+    }
+
+    public static UserProfile getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(UserProfile currentUser) {
+        UserProfile.currentUser = currentUser;
     }
 
     public String getName() {
@@ -31,11 +40,13 @@ public class UserProfile {
         mostRecentID = id;
     }
 
-    public static int getID()
+    public static int getNewID()
     {
         mostRecentID++;
         return mostRecentID;
     }
+
+
 
 
 

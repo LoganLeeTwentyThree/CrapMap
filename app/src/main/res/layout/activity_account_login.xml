@@ -15,17 +15,31 @@
         android:text="Select an Account"
         android:textSize="40dp"
         android:layout_margin="20dp"
+        android:layout_weight="0.01"
         />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="560dp"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountSelect"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"/>
+    </ScrollView>
+
+
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/addNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add a new account?"/>
+        android:text="Add a new account?"
+        android:tag="addNew"
+        android:layout_weight="0.01"/>
 
 
 </LinearLayout>

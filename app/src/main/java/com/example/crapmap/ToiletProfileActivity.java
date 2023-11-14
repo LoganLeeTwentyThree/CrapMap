@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crapmap.model.NotFoundException;
 import com.example.crapmap.model.RatingList;
 import com.example.crapmap.model.ToiletList;
 import com.example.crapmap.model.ToiletProfile;
@@ -27,12 +28,18 @@ public class ToiletProfileActivity  extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_toiletprofile);
+        setContentView(R.layout.activity_toilet_profile);
 
         currentToiletID = (int)getIntent().getExtras().get("Toilet");
 
-        currentToilet = new ToiletList().getToiletByID(currentToiletID);
-        ScrollView scrollView = findViewById(R.id.ratingsScrollView);
+        try{
+            currentToilet = new ToiletList(this).getToiletByID(currentToiletID);
+        }catch(NotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        ScrollView scrollView = findViewById(R.id.toiletProfileScrollView);
 
         RatingList ratingList = new RatingList(this);
 
