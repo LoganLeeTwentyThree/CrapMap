@@ -28,6 +28,9 @@
             android:name=".accountLogin"
             android:exported="false" />
         <activity
+            android:name=".ToiletProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
