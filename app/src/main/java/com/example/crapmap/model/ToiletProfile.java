@@ -1,5 +1,7 @@
 package com.example.crapmap.model;
 
+import android.util.Log;
+
 import com.example.crapmap.R;
 
 public class ToiletProfile extends Profile{
@@ -8,13 +10,16 @@ public class ToiletProfile extends Profile{
     private static int mostRecentID;
     private String name;
     private float averageRating;
+    private float[] latlong = new float[2];
 
-    public ToiletProfile(int imageID, int id, String name, float averageRating)
+    public ToiletProfile(int imageID, int id, String name, float averageRating, float[] latlong)
     {
         this.averageRating = averageRating;
         this.name = name;
         this.imageID = imageID;
         ID = id;
+        this.latlong[0] = latlong[0];
+        this.latlong[1] = latlong[1];
     }
 
     public int getImageID() {
@@ -58,5 +63,10 @@ public class ToiletProfile extends Profile{
 
     public void setAverageRating(float averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public boolean equals(ToiletProfile other) {
+        Log.d("ToiletProfile.java", this.getName() + " == " + other.getName() + " ? " + (this.getID() == other.getID()));
+        return this.getID() == other.getID();
     }
 }

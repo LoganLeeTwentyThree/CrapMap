@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.content.Intent;
 
 import com.example.crapmap.model.Rating;
 import com.example.crapmap.model.RatingList;
@@ -22,6 +24,7 @@ import com.example.crapmap.model.UserProfile;
 import java.io.IOException;
 import java.net.NoRouteToHostException;
 import java.util.ArrayList;
+
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -154,7 +157,14 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 nameRatingBox.addView(bar);
 
-
+                // TODO: attempt to make it clickable
+                cardView.setOnClickListener(v -> {
+                    Log.d("UserProfileActivity.java", "clicked toilet view");
+                    Intent intent = new Intent(this, ToiletProfileActivity.class);
+                    // TODO: add toilet id as intent thingy
+                    intent.putExtra("Toilet", rating.getRatee().getID());
+                    startActivity(intent);
+                });
 
             }
 
