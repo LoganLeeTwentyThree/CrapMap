@@ -10,10 +10,11 @@ public class UserList {
     private static boolean firstLoad = true;
 
     private Context context;
-    public UserList(Context loading) throws IOException {
+    public UserList(Context loading) {
         context = loading;
-        loadUserList("UserList.csv");
         this.userList = new ArrayList<>();
+        loadUserList("UserList.csv");
+
 
 
     }
@@ -40,9 +41,14 @@ public class UserList {
         try {
 
             File file = new File(context.getFilesDir(), "UserList.csv");
+
+            file.createNewFile();//in case it doesnt already exist
+
             Scanner scanner = new Scanner(file);
+
             while ((scanner.hasNext())) {
                 String row = scanner.nextLine();
+
                 String[] tokens = row.split(",");
                 int[] timeSpentByDay = new int[7];
                 for (int i = 2; i < 9; i++) {
@@ -51,7 +57,10 @@ public class UserList {
 
                 //name, id, timeSpent0, 1, ...7
                 UserProfile newUser = new UserProfile(tokens[0], Integer.parseInt(tokens[1]), timeSpentByDay);
+
                 userList.add(newUser);
+
+
 
                 if(!scanner.hasNext())//if this is the last recorded user in the csv
                 {
@@ -71,7 +80,7 @@ public class UserList {
     public void addUserToCSV(UserProfile userProfile) {
         try {
             File file = new File(context.getFilesDir(), "UserList.csv");
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer = new FileWriter(file, true);
 
             String toAdd = userProfile.getName();
             toAdd += "," + userProfile.getId();
@@ -81,7 +90,8 @@ public class UserList {
                 toAdd += "," + userProfile.getTimeSpent()[i];
             }
 
-            writer.append(toAdd);
+            writer.append(toAdd + "\n");
+            writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -3,10 +3,10 @@ package com.example.crapmap.model;
 public class Rating {
     private UserProfile rater;
     private ToiletProfile ratee;
-    private int numStars;
+    private float numStars;
     private String review;
 
-    public Rating( UserProfile rater, ToiletProfile ratee, int numStars, String review)
+    public Rating( UserProfile rater, ToiletProfile ratee, float numStars, String review)
     {
         this.rater = rater;
         this.ratee = ratee;
@@ -16,7 +16,7 @@ public class Rating {
 
 
 
-    public int getNumStars() {
+    public float getNumStars() {
         return numStars;
     }
 

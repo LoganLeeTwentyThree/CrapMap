@@ -16,6 +16,15 @@
             android:name=".accountSignup"
             android:exported="false" />
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddToiletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ToiletListActivity"
+            android:exported="false" />
+        <activity
             android:name=".accountLogin"
             android:exported="false" />
         <activity
