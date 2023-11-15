@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.activity.*;
 
+import com.example.crapmap.model.NotFoundException;
 import com.example.crapmap.model.Rating;
 import com.example.crapmap.model.RatingList;
 import com.example.crapmap.model.ToiletList;
@@ -69,27 +70,41 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
             RatingBar bar = findViewById(R.id.addToiletRatingBar);
             EditText review = findViewById(R.id.addToiletReview);
 
-            if(review.getText().toString().contains(",") || review.getText().toString().contains("\n"))
+            if(review.getText().toString().contains(",") || review.getText().toString().contains("\n") || nameField.getText().toString().contains(",") || nameField.getText().toString().contains("\n"))
             {
                 //I really don't have the time to do this
                 Toast.makeText(this, "No Commas or newlines >:(", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            ToiletProfile newToilet = new ToiletProfile(
-                    R.drawable.chisholm_hall_855,
-                    ToiletProfile.getNewID(),
-                    nameField.getText().toString(),
-                    bar.getRating()
-            );
-
+            // just add a rating if name is same as preexisting toilet
             ToiletList toiletList = new ToiletList(this);
-            toiletList.addToiletToCSV(newToilet);
-
             RatingList ratingList = new RatingList(this);
+
+            ToiletProfile toilet;
+
+            try {
+                toilet = toiletList.getToiletByName(nameField.getText().toString());
+                Log.d("AddToiletActivity.java", "found preexisting toilet");
+            } catch (NotFoundException e) {
+                Log.d("AddToiletActivity.java", "could not find preexisting toilet");
+
+                toilet = new ToiletProfile(
+                        R.drawable.chisholm_hall_855,
+                        ToiletProfile.getNewID(),
+                        nameField.getText().toString(),
+                        bar.getRating(),
+                        new float[] {0.0F, 0.0F}
+                );
+
+                toiletList.addToiletToCSV(toilet);
+            }
+
+
+
             Rating rating = new Rating(
                     UserProfile.getCurrentUser(),
-                    newToilet,
+                    toilet,
                     bar.getRating(),
                     review.getText().toString()
                     );
