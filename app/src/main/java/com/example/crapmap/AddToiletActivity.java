@@ -76,14 +76,7 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
                 Log.d("AddToiletActivity.java", "found preexisting toilet");
             } catch (NotFoundException e) {
                 Log.d("AddToiletActivity.java", "could not find preexisting toilet");
-
-                toilet = new ToiletProfile(
-                        R.drawable.chisholm_hall_855,
-                        ToiletProfile.getNewID(),
-                        nameField.getText().toString(),
-                        bar.getRating(),
-                        new float[] {0.0F, 0.0F}
-                );
+            }
 
             Intent intent = new Intent(this, MapActivity.class);
             intent.putExtra("Set", true);

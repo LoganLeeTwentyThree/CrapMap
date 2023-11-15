@@ -47,7 +47,7 @@ public class MapActivity extends AppCompatActivity implements View.OnTouchListen
 
                 pin.setLayoutParams(params);
                 ConstraintLayout root = findViewById(R.id.mapRoot);
-                pin.setId();
+                //pin.setId();
                 root.addView(pin);
 
                 ConstraintLayout constraintLayout = findViewById(R.id.mapRoot);
