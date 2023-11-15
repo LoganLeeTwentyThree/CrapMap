@@ -16,6 +16,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.content.Intent;
 
+import com.example.crapmap.model.NotFoundException;
 import com.example.crapmap.model.Rating;
 import com.example.crapmap.model.RatingList;
 import com.example.crapmap.model.UserList;
@@ -27,11 +28,18 @@ import java.util.ArrayList;
 
 
 public class UserProfileActivity extends AppCompatActivity {
-
+    private UserProfile user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        UserList userlist = new UserList(this);
+        try {
+            user = userlist.getUserById((int) getIntent().getExtras().get("User"));
+        } catch (NotFoundException e) {
+            Log.e("UserProfileActivity.java", "Did not recieve user ID as extra (should recieve \"User\": <userid>)");
+        }
 
         ImageButton backBtn = findViewById(R.id.back_btn);
 
@@ -45,7 +53,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
             TextView usernameText = (TextView)findViewById(R.id.username);
-            usernameText.setText(UserProfile.getCurrentUser().getName());
+            usernameText.setText(user.getName());
 
             //for setting the averages
             int ids[] = {
@@ -62,7 +70,7 @@ public class UserProfileActivity extends AppCompatActivity {
             for( int i = 0; i < 7; i++ )
             {
                 findViewById(ids[i]).setLayoutParams(new LinearLayout.LayoutParams(
-                        10, 10 * UserProfile.getCurrentUser().getTimeSpent()[i]
+                        10, 10 * user.getTimeSpent()[i]
                 ));
             }
 
@@ -71,7 +79,7 @@ public class UserProfileActivity extends AppCompatActivity {
             ArrayList<Rating> curUserRatings = new ArrayList<Rating>();
             for( Rating rating : ratingList.getAllRatings())
             {
-                if(rating.getRater().getId() == UserProfile.getCurrentUser().getId())
+                if(rating.getRater().getId() == user.getId())
                 {
                     curUserRatings.add(rating);
                 }

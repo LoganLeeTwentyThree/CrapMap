@@ -36,6 +36,11 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
 
         Button submit = findViewById(R.id.addToiletSubmitButton);
         submit.setOnClickListener(this);
+
+        String toiletname = ((String) getIntent().getExtras().get("ToiletName"));
+        EditText toiletname_view = findViewById(R.id.toiletName);
+        toiletname_view.setText(toiletname);
+
     }
 
 

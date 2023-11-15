@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                intent.putExtra("User", UserProfile.getCurrentUser().getId());
                 startActivity(intent);
             }
         });
