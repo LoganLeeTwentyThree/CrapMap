@@ -83,6 +83,20 @@ public class ToiletList extends List
         throw new NotFoundException("Toilet not found");
     }
 
+    public ToiletProfile getToiletByName(String name) throws NotFoundException
+    {
+
+        for( ToiletProfile toilet : toiletList )
+        {
+            if( toilet.getName().equals(name))
+            {
+                return toilet;
+            }
+        }
+
+        throw new NotFoundException("Toilet not found");
+    }
+
     public void addToiletToCSV(ToiletProfile toiletProfile) {
         try {
             File file = new File(context.getFilesDir(), "ToiletList.csv");

@@ -58,13 +58,32 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
             RatingBar bar = findViewById(R.id.addToiletRatingBar);
             EditText review = findViewById(R.id.addToiletReview);
 
-            if(review.getText().toString().contains(",") || review.getText().toString().contains("\n"))
+            if(review.getText().toString().contains(",") || review.getText().toString().contains("\n") || nameField.getText().toString().contains(",") || nameField.getText().toString().contains("\n"))
             {
                 //I really don't have the time to do this
                 Toast.makeText(this, "No Commas or newlines >:(", Toast.LENGTH_LONG).show();
                 return;
             }
 
+            // just add a rating if name is same as preexisting toilet
+            ToiletList toiletList = new ToiletList(this);
+            RatingList ratingList = new RatingList(this);
+
+            ToiletProfile toilet;
+
+            try {
+                toilet = toiletList.getToiletByName(nameField.getText().toString());
+                Log.d("AddToiletActivity.java", "found preexisting toilet");
+            } catch (NotFoundException e) {
+                Log.d("AddToiletActivity.java", "could not find preexisting toilet");
+
+                toilet = new ToiletProfile(
+                        R.drawable.chisholm_hall_855,
+                        ToiletProfile.getNewID(),
+                        nameField.getText().toString(),
+                        bar.getRating(),
+                        new float[] {0.0F, 0.0F}
+                );
 
             Intent intent = new Intent(this, MapActivity.class);
             intent.putExtra("Set", true);
@@ -82,44 +101,44 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    private void saveNewToilet()
-    {
+        private void saveNewToilet()
+        {
 
 
-        int id = (int)getIntent().getExtras().get("ID");
-        float ratingNum = (float)getIntent().getExtras().get("Rating");
-        String review = getIntent().getExtras().get("Review").toString();
-        float x = (float)getIntent().getExtras().get("X");
-        float y = (float)getIntent().getExtras().get("Y");
+            int id = (int)getIntent().getExtras().get("ID");
+            float ratingNum = (float)getIntent().getExtras().get("Rating");
+            String review = getIntent().getExtras().get("Review").toString();
+            float x = (float)getIntent().getExtras().get("X");
+            float y = (float)getIntent().getExtras().get("Y");
 
-        String name = getIntent().getExtras().get("Name").toString();
+            String name = getIntent().getExtras().get("Name").toString();
 
-        ToiletProfile newToilet = new ToiletProfile(
-                R.drawable.chisholm_hall_855,
-                id,
-                name,
-                ratingNum,
-                new float[]{x,y}
-        );
+            ToiletProfile newToilet = new ToiletProfile(
+                    R.drawable.chisholm_hall_855,
+                    id,
+                    name,
+                    ratingNum,
+                    new float[]{x,y}
+            );
 
-        ToiletList toiletList = new ToiletList(this);
+            ToiletList toiletList = new ToiletList(this);
 
-        toiletList.addToiletToCSV(newToilet);
+            toiletList.addToiletToCSV(newToilet);
 
-        RatingList ratingList = new RatingList(this);
-        Rating rating = new Rating(
-                UserProfile.getCurrentUser(),
-                newToilet,
-                ratingNum,
-                review
-        );
-        ratingList.addRatingToCSV(rating);
+            RatingList ratingList = new RatingList(this);
+            Rating rating = new Rating(
+                    UserProfile.getCurrentUser(),
+                    newToilet,
+                    ratingNum,
+                    review
+            );
+            ratingList.addRatingToCSV(rating);
 
-        Intent intent = new Intent(this, ToiletListActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(this, ToiletListActivity.class);
+            startActivity(intent);
 
 
 
-    }
+        }
 
 }
