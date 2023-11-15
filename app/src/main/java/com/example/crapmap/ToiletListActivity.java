@@ -164,6 +164,7 @@ public class ToiletListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("ToiletListActivity.java", "clicked plus button");
                 Intent intent = new Intent(ToiletListActivity.this, AddToiletActivity.class);
+                intent.putExtra("ToiletName", "");
                 intent.putExtra("Set", false);
                 startActivity(intent);
             }

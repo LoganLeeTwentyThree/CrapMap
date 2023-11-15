@@ -393,5 +393,16 @@
 
     </ScrollView>
 
+    <ImageButton
+        android:id="@+id/plus_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <View
+        android:layout_width="15dp"
+        android:layout_height="45dp" />
 
 </LinearLayout>

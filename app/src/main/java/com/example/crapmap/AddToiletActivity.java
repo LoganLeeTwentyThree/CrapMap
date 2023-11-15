@@ -39,6 +39,10 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
         Button submit = findViewById(R.id.addToiletSubmitButton);
         submit.setOnClickListener(this);
 
+        String toiletname = ((String) getIntent().getExtras().get("ToiletName"));
+        EditText toiletname_view = findViewById(R.id.toiletName);
+        toiletname_view.setText(toiletname);
+
         if( getIntent().getExtras().get("FromMap") != null )
         {
             if( (Boolean)getIntent().getExtras().get("FromMap") ){
@@ -46,6 +50,7 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
                 saveNewToilet();
             }
         }
+
     }
 
 
