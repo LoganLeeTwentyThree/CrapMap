@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -31,8 +33,8 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_toilet);
 
-        Button imageSubmitButton = findViewById(R.id.uploadImage);
-        imageSubmitButton.setOnClickListener(this);
+        ImageButton backButton = findViewById(R.id.addToiletBack);
+        backButton.setOnClickListener(this);
 
         Button submit = findViewById(R.id.addToiletSubmitButton);
         submit.setOnClickListener(this);
@@ -41,34 +43,20 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
         EditText toiletname_view = findViewById(R.id.toiletName);
         toiletname_view.setText(toiletname);
 
+        if( getIntent().getExtras().get("FromMap") != null )
+        {
+            if( (Boolean)getIntent().getExtras().get("FromMap") ){
+
+                saveNewToilet();
+            }
+        }
+
     }
 
 
     @Override
     public void onClick(View view) {
-        if( view.getTag().equals("uploadImage") )
-        {
-
-            /* Registers a photo picker activity launcher in single-select mode.
-            ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
-                    registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
-                        // Callback is invoked after the user selects a media item or closes the
-                        // photo picker.
-                        if (uri != null) {
-                            Log.d("PhotoPicker", "Selected URI: " + uri);
-                        } else {
-                            Log.d("PhotoPicker", "No media selected");
-                        }
-                    });
-
-            // Launch the photo picker and let the user choose only images.
-            pickMedia.launch(new PickVisualMediaRequest.Builder()
-                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                    .build());
-        */
-            //TODO: re evaluate whether we actually can implement images for profiles (Causes gradle issues :))
-
-        }else if(view.getTag().equals("submit"))
+        if(view.getTag().equals("submit"))
         {
 
             EditText nameField = findViewById(R.id.toiletName);
@@ -93,29 +81,62 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
                 Log.d("AddToiletActivity.java", "found preexisting toilet");
             } catch (NotFoundException e) {
                 Log.d("AddToiletActivity.java", "could not find preexisting toilet");
-
-                toilet = new ToiletProfile(
-                        R.drawable.chisholm_hall_855,
-                        ToiletProfile.getNewID(),
-                        nameField.getText().toString(),
-                        bar.getRating(),
-                        new float[] {0.0F, 0.0F}
-                );
-
-                toiletList.addToiletToCSV(toilet);
             }
 
+            Intent intent = new Intent(this, MapActivity.class);
+            intent.putExtra("Set", true);
+            intent.putExtra("Name", nameField.getText().toString());
+            intent.putExtra("ID", ToiletProfile.getNewID());
+            intent.putExtra("Rating", bar.getRating());
+            intent.putExtra("Review", review.getText());
+            startActivity(intent);
 
-
-            Rating rating = new Rating(
-                    UserProfile.getCurrentUser(),
-                    toilet,
-                    bar.getRating(),
-                    review.getText().toString()
-                    );
-            ratingList.addRatingToCSV(rating);
-            finish();
+        }else if(view.getTag().equals("back"))
+        {
+            Intent intent = new Intent(this, ToiletListActivity.class);
+            startActivity(intent);
         }
 
     }
+
+        private void saveNewToilet()
+        {
+
+
+            int id = (int)getIntent().getExtras().get("ID");
+            float ratingNum = (float)getIntent().getExtras().get("Rating");
+            String review = getIntent().getExtras().get("Review").toString();
+            float x = (float)getIntent().getExtras().get("X");
+            float y = (float)getIntent().getExtras().get("Y");
+
+            String name = getIntent().getExtras().get("Name").toString();
+
+            ToiletProfile newToilet = new ToiletProfile(
+                    R.drawable.chisholm_hall_855,
+                    id,
+                    name,
+                    ratingNum,
+                    new float[]{x,y}
+            );
+
+            ToiletList toiletList = new ToiletList(this);
+
+            toiletList.addToiletToCSV(newToilet);
+
+            RatingList ratingList = new RatingList(this);
+            Rating rating = new Rating(
+                    UserProfile.getCurrentUser(),
+                    newToilet,
+                    ratingNum,
+                    review
+            );
+            ratingList.addRatingToCSV(rating);
+
+            Intent intent = new Intent(this, ToiletListActivity.class);
+            startActivity(intent);
+
+
+
+        }
+
 }
