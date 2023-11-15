@@ -69,4 +69,13 @@ public class ToiletProfile extends Profile{
         Log.d("ToiletProfile.java", this.getName() + " == " + other.getName() + " ? " + (this.getID() == other.getID()));
         return this.getID() == other.getID();
     }
+
+    public void setLatLong(float[] latLong)
+    {
+        this.latlong = latlong;
+    }
+
+    public float[] getLatlong() {
+        return latlong;
+    }
 }

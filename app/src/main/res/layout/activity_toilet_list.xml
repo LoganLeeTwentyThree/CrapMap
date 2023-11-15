@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
         android:text="Toilet List:"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textStyle="bold"
@@ -37,132 +38,10 @@
         app:layout_constraintTop_toBottomOf="@+id/title">
 
         <LinearLayout
+            android:id="@+id/toiletListParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!--            each toilet -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="75dp"
-                    android:orientation="horizontal">
-                    <!--                    spacer-->
-                    <View
-                        android:layout_width="50dp"
-                        android:layout_height="50dp" />
-                    <!--                toilet thumbnail -->
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView3"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:shape="ring"
-                        app:cardCornerRadius="37.5dp">
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
-                            app:srcCompat="@drawable/sample_toilet_01_bad" />
-                    </androidx.cardview.widget.CardView>
-                    <!--name-->
-                    <!--                    spacer-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Bucket" />
-
-                    <!--                    rating -->
-
-                    <!--spacer-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:numStars="5"
-                        android:rating="1" />
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <View
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="75dp"
-                    android:orientation="horizontal">
-                    <!--                    spacer-->
-                    <View
-                        android:layout_width="50dp"
-                        android:layout_height="50dp" />
-                    <!--                toilet thumbnail -->
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:shape="ring"
-                        app:cardCornerRadius="37.5dp">
-
-                        <ImageView
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
-                            app:srcCompat="@drawable/sample_toilet_02_jpl" />
-                    </androidx.cardview.widget.CardView>
-                    <!--name-->
-                    <!--                    spacer-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="JPL" />
-
-                    <!--                    rating -->
-
-                    <!--spacer-->
-                    <View
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-
-                    <RatingBar
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:numStars="5"
-                        android:rating="5" />
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>

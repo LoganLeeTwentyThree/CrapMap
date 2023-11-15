@@ -42,8 +42,14 @@ public class ToiletList extends List
 
 
 
-                //imageID, id, name, avgRating
-                ToiletProfile newToilet = new ToiletProfile(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Float.parseFloat(tokens[3]));
+                //imageID, id, name, avgRating, locX, locY
+                ToiletProfile newToilet = new ToiletProfile(
+                        Integer.parseInt(tokens[0]),
+                        Integer.parseInt(tokens[1]),
+                        tokens[2],
+                        Float.parseFloat(tokens[3]),
+                        new float[]{Float.parseFloat(tokens[4]), Float.parseFloat(tokens[5])}
+                );
 
                 toiletList.add(newToilet);
 
@@ -88,6 +94,8 @@ public class ToiletList extends List
             toAdd += "," + toiletProfile.getID();
             toAdd += "," + toiletProfile.getName();
             toAdd += "," + toiletProfile.getAverageRating();
+            toAdd += "," + toiletProfile.getLatlong()[0];
+            toAdd += "," + toiletProfile.getLatlong()[1];
 
             writer.append(toAdd + "\n");
             writer.close();
@@ -96,5 +104,10 @@ public class ToiletList extends List
             e.printStackTrace();
         }
     }
+
+    public ArrayList<ToiletProfile> getToiletList() {
+        return toiletList;
+    }
+
 
 }

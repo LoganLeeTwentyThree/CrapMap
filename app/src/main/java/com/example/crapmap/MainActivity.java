@@ -64,9 +64,8 @@ public class MainActivity extends AppCompatActivity {
         mapButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked mapButton");
-                // TODO: make mapview activity class thing
-                // Intent intent = new Intent(MainActivity.this, ToiletListActivity.class);
-                // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
             }
         });
     }
