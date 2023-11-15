@@ -43,7 +43,7 @@ public class ToiletList extends List
 
 
                 //imageID, id, name, avgRating
-                ToiletProfile newToilet = new ToiletProfile(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Float.parseFloat(tokens[3]));
+                ToiletProfile newToilet = new ToiletProfile(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), tokens[2], Float.parseFloat(tokens[3]), new float[] {0.0F, 0.0F});
 
                 toiletList.add(newToilet);
 
@@ -69,6 +69,20 @@ public class ToiletList extends List
         for( ToiletProfile toilet : toiletList )
         {
             if( toilet.getID() == id )
+            {
+                return toilet;
+            }
+        }
+
+        throw new NotFoundException("Toilet not found");
+    }
+
+    public ToiletProfile getToiletByName(String name) throws NotFoundException
+    {
+
+        for( ToiletProfile toilet : toiletList )
+        {
+            if( toilet.getName().equals(name))
             {
                 return toilet;
             }
