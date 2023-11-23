@@ -3,6 +3,7 @@ package com.example.crapmap;
 import static com.example.crapmap.R.drawable.border;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,9 @@ public class ToiletProfileActivity  extends AppCompatActivity {
         {
             e.printStackTrace();
         }
+
+        TextView title = findViewById(R.id.title);
+        title.setText(currentToilet.getName());
 
         ImageButton plusbtn = findViewById(R.id.plus_btn);
         plusbtn.setOnClickListener(v -> {
@@ -99,12 +103,22 @@ public class ToiletProfileActivity  extends AppCompatActivity {
 
         for( Rating rating : ratingList.getAllRatings() )
         {
+            if (rating.getRatee().getID() != currentToiletID) {
+                continue;
+            }
+
             CardView cardView = new CardView(this);
             cardView.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT
             ));
-
+            LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            cardViewParams.setMargins(0,10,0,10);
+            cardView.setLayoutParams(cardViewParams);
+            cardView.setCardBackgroundColor(Color.parseColor("#e0e0e0"));
             parent.addView(cardView);
 
             //container for single rating entry
@@ -114,7 +128,7 @@ public class ToiletProfileActivity  extends AppCompatActivity {
                     300
             ));
             ratingEntry.setOrientation(LinearLayout.HORIZONTAL);
-            ratingEntry.setGravity(Gravity.CENTER);
+            ratingEntry.setGravity(Gravity.CENTER_VERTICAL);
 
             cardView.addView(ratingEntry);
 
@@ -184,10 +198,6 @@ public class ToiletProfileActivity  extends AppCompatActivity {
             rating_textView.setGravity(Gravity.CENTER);
 
             nameRatingBox.addView(rating_textView);
-
-            View margin = new View(this);
-            margin.setMinimumHeight(350);
-            cardView.addView(margin);
 
             // TODO: attempt to make it clickable
             cardView.setOnClickListener(v -> {

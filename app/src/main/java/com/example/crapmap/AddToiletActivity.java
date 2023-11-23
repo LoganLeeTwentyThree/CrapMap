@@ -76,9 +76,18 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
 
             ToiletProfile toilet;
 
-            try {
+            try { // if preexisting toilet, just add review, not new toilet
                 toilet = toiletList.getToiletByName(nameField.getText().toString());
                 Log.d("AddToiletActivity.java", "found preexisting toilet");
+                Rating rating = new Rating(
+                        UserProfile.getCurrentUser(),
+                        toilet,
+                        bar.getRating(),
+                        review.getText().toString()
+                );
+                ratingList.addRatingToCSV(rating);
+                finish();
+                return;
             } catch (NotFoundException e) {
                 Log.d("AddToiletActivity.java", "could not find preexisting toilet");
             }

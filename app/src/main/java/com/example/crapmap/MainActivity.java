@@ -20,15 +20,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("MainActivity.java", "1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d("MainActivity.java", "2");
         initializeLists();//ensures that there are in fact csv files for all relevant data
-
+        Log.d("MainActivity.java", "2.5");
         Button userSelectButton = findViewById(R.id.userSelectButton);
         Button ProfileButton = findViewById(R.id.profileButton);
         Button toiletListButton = findViewById(R.id.toiletListButton);
         Button mapButton = findViewById(R.id.mapButton);
+        Log.d("MainActivity.java", "3");
         userSelectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked userSelectButton");
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Log.d("MainActivity.java", "4");
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked ProfileButton");
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Log.d("MainActivity.java", "5");
         toiletListButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked toiletListButton");
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Log.d("MainActivity.java", "6");
         mapButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked mapButton");
@@ -73,8 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeLists()
     {
+        Log.d("MainActivity.java", "init_lists: 1");
         UserList user = new UserList(this);
+        Log.d("MainActivity.java", "init_lists: 2");
         ToiletList toiletList = new ToiletList(this);
+        Log.d("MainActivity.java", "init_lists: 3");
         RatingList ratingList = new RatingList(this);
+        Log.d("MainActivity.java", "init_lists: 4");
     }
 }
