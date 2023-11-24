@@ -99,6 +99,10 @@ public class MapActivity extends AppCompatActivity implements View.OnTouchListen
                 if( view.getTag().equals(("map"))){
                     int id = (int)getIntent().getExtras().get("ID");
 
+                    Log.d("MapActivity.java", "touched: " + Float.toString((float)motionEvent.getX()) + "," + Float.toString((float)motionEvent.getY()));
+                    if (true == false) {
+                        return true;
+                    }
                     Intent intent = new Intent(this, AddToiletActivity.class);
                     intent.putExtra("Name", (String)getIntent().getExtras().get("Name"));
                     intent.putExtra("X", (float)motionEvent.getX());
@@ -130,10 +134,15 @@ public class MapActivity extends AppCompatActivity implements View.OnTouchListen
                     ConstraintLayout.LayoutParams.WRAP_CONTENT
             );
             layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-            layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
-            layoutParams.bottomMargin = Math.round(ilatlong[1]);
-            layoutParams.leftMargin = Math.round(ilatlong[1]);
+            layoutParams.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+            layoutParams.topMargin = Math.round(ilatlong[1]) - 85; // 35 is height of pin image
+            layoutParams.leftMargin = Math.round(ilatlong[0]) - 20; // 20 is height of pin image
             newpin.setLayoutParams(layoutParams);
+            newpin.setOnClickListener(v -> {
+                Intent intent = new Intent(this, ToiletProfileActivity.class);
+                intent.putExtra("Toilet", toilet.getID());
+                startActivity(intent);
+            });
             parent.addView(newpin);
 
         }
