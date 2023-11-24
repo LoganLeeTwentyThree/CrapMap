@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -44,7 +45,7 @@ public class ToiletListActivity extends AppCompatActivity {
             );
             cardViewParams.setMargins(0,10,0,10);
             cardView.setLayoutParams(cardViewParams);
-            cardView.setCardBackgroundColor(Color.parseColor("#808080"));
+            cardView.setCardBackgroundColor(Color.parseColor("#e0e0e0"));
             parent.addView(cardView);
 
             //Layout for a single toilet entry
@@ -141,8 +142,6 @@ public class ToiletListActivity extends AppCompatActivity {
             ratingBar.setPadding(15,0,0,0);
 
             nameAndRating.addView(ratingBar);
-
-
         }
 
 

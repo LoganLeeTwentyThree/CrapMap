@@ -29,13 +29,14 @@
             android:layout_height="wrap_content"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/uploadImage"
-            android:tag="uploadImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Upload Image"/>
+<!--        TODO-->
+<!--        <Button-->
+<!--            android:id="@+id/uploadImage"-->
+<!--            android:tag="uploadImage"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="Upload Image"/>-->
 
         <EditText
             android:id="@+id/toiletName"

@@ -15,18 +15,77 @@
         android:text="UTSA Toilet Map"
         android:textAlignment="center"
         android:textSize="50dp"
-        android:background="#808080"
+        android:background="#e0e0e0"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:tag="map"
-        android:layout_width="405dp"
-        android:layout_height="647dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mapTitle"
+        app:layout_constraintTop_toTopOf="@+id/mapTitle"
         app:srcCompat="@drawable/main_campus" />
+
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.386"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/_85px_google_maps_pin_svg__2_" />-->
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.774"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.466"-->
+<!--        app:srcCompat="@drawable/_85px_google_maps_pin_svg__2_" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView5"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.421"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.688"-->
+<!--        app:srcCompat="@drawable/_85px_google_maps_pin_svg__2_" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView7"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.337"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.451"-->
+<!--        app:srcCompat="@drawable/_85px_google_maps_pin_svg__2_" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView6"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.314"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.673"-->
+<!--        app:srcCompat="@drawable/_85px_google_maps_pin_svg__2_" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

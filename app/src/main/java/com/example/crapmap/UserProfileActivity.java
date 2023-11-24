@@ -3,6 +3,7 @@ package com.example.crapmap;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,8 +94,17 @@ public class UserProfileActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.MATCH_PARENT
                 ));
 
+                LinearLayout.LayoutParams cardViewParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+                cardViewParams.setMargins(0,10,0,10);
+                cardView.setLayoutParams(cardViewParams);
+                cardView.setCardBackgroundColor(Color.parseColor("#e0e0e0"));
+
                 LinearLayout parent = findViewById(R.id.ratingsBox);
                 parent.addView(cardView);
+
 
                 //container for single rating entry
                 LinearLayout ratingEntry = new LinearLayout(this);
