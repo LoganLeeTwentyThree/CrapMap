@@ -175,11 +175,9 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 nameRatingBox.addView(bar);
 
-                // TODO: attempt to make it clickable
                 cardView.setOnClickListener(v -> {
                     Log.d("UserProfileActivity.java", "clicked toilet view");
                     Intent intent = new Intent(this, ToiletProfileActivity.class);
-                    // TODO: add toilet id as intent thingy
                     intent.putExtra("Toilet", rating.getRatee().getID());
                     startActivity(intent);
                 });

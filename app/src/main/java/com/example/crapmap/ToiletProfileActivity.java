@@ -63,44 +63,6 @@ public class ToiletProfileActivity  extends AppCompatActivity {
 
         RatingList ratingList = new RatingList(this);
 
-        // for each rating
-//        for( int i = 0; i < ratingList.getAllRatings().size(); i++ )
-//        {
-//            // skip if the rating is not related to this toilet
-//            if( !ratingList.getAllRatings().get(i).getRatee().equals(currentToilet) ) {
-//                Log.d("ToiletProfileActivity.java", "skipping over rating: " + ratingList.getAllRatings().get(i).getRatee().getName());
-//                continue;
-//            } else {
-//                Log.d("ToiletProfileActivity.java", "adding rating: " + ratingList.getAllRatings().get(i).getRatee().getName());
-//            }
-//
-//            LinearLayout linearLayout = new LinearLayout(this);
-//            linearLayout.setLayoutParams(
-//                    new LinearLayout.LayoutParams(
-//                            LinearLayout.LayoutParams.MATCH_PARENT,
-//                            LinearLayout.LayoutParams.MATCH_PARENT
-//                    ));
-//            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-//
-//            Log.d("ToiletProfileActivity.java", "created linear layout");
-//
-////            ImageView profilePic = new ImageView(this);
-////            profilePic.setImageResource(R.drawable.johnsmith);
-//
-////            linearLayout.addView(profilePic);
-//            Log.d("ToiletProfileActivity.java", "added profile pic");
-//            TextView review_textView = new TextView(this);
-//            review_textView.setText(ratingList.getAllRatings().get(i).getReview());
-//
-//            linearLayout.addView(review_textView);
-//
-//            Log.d("ToiletProfileActivity.java", "about to add to scrollview...");
-//
-//            parentView.addView(linearLayout);
-//
-//            Log.d("ToiletProfileActivity.java", "successfully added to scrollview");
-//        }
-
         for( Rating rating : ratingList.getAllRatings() )
         {
             if (rating.getRatee().getID() != currentToiletID) {

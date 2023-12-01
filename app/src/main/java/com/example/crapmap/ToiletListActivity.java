@@ -46,6 +46,11 @@ public class ToiletListActivity extends AppCompatActivity {
             cardViewParams.setMargins(0,10,0,10);
             cardView.setLayoutParams(cardViewParams);
             cardView.setCardBackgroundColor(Color.parseColor("#e0e0e0"));
+            cardView.setOnClickListener((view) -> {
+                Intent intent = new Intent(this, ToiletProfileActivity.class);
+                intent.putExtra("Toilet", toilet.getID());
+                startActivity(intent);
+            });
             parent.addView(cardView);
 
             //Layout for a single toilet entry
