@@ -1,8 +1,12 @@
 package com.example.crapmap.model;
 
 public class Profile {
-    private String name;
+    protected String name;
 
+    public Profile( String name )
+    {
+        this.name = name;
+    }
 
     public String getName() {
         return name;

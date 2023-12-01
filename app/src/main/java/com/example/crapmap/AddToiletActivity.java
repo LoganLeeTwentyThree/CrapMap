@@ -65,10 +65,11 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
 
             if(review.getText().toString().contains(",") || review.getText().toString().contains("\n") || nameField.getText().toString().contains(",") || nameField.getText().toString().contains("\n"))
             {
-                //I really don't have the time to do this
-                Toast.makeText(this, "No Commas or newlines >:(", Toast.LENGTH_LONG).show();
+                //Allowing newlines or commas will break csv reading
+                Toast.makeText(this, "No commas or newlines allowed in input. Sorry!", Toast.LENGTH_LONG).show();
                 return;
             }
+
 
             // just add a rating if name is same as preexisting toilet
             ToiletList toiletList = new ToiletList(this);

@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ToiletList extends List
-{
+public class ToiletList {
 
     private Context context;
     private ArrayList<ToiletProfile> toiletList;
@@ -24,7 +23,7 @@ public class ToiletList extends List
     }
 
 
-
+    //loads the toilet list arraylist from ToiletList.csv
     private void load()
     {
         try {

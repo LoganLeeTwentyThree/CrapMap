@@ -13,7 +13,7 @@ public class UserList {
     public UserList(Context loading) {
         context = loading;
         this.userList = new ArrayList<>();
-        loadUserList("UserList.csv");
+        loadUserList();
 
 
 
@@ -37,7 +37,7 @@ public class UserList {
         throw new NotFoundException("No user matches given ID");
     }
 
-    private void loadUserList(String Filename) {
+    private void loadUserList() {
         try {
 
             File file = new File(context.getFilesDir(), "UserList.csv");

@@ -1,19 +1,14 @@
 package com.example.crapmap.model;
 
-import static java.lang.System.in;
-
 import android.content.Context;
-import android.content.res.AssetManager;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RatingList extends List
-{
+public class RatingList {
     private ArrayList<Rating> allRatings;
     private Context context;
 
@@ -95,18 +90,6 @@ public class RatingList extends List
 
     public ArrayList<Rating> getAllRatings() {
         return allRatings;
-    }
-
-    public void setAllRatings(ArrayList<Rating> allRatings) {
-        this.allRatings = allRatings;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
     }
 
     public void addRatingToCSV(Rating rating) {

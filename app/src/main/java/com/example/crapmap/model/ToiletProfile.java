@@ -8,14 +8,13 @@ public class ToiletProfile extends Profile{
     private int imageID = R.drawable.chisholm_hall_855;
     private int ID;
     private static int mostRecentID;
-    private String name;
     private float averageRating;
     private float[] latlong = new float[2];
 
     public ToiletProfile(int imageID, int id, String name, float averageRating, float[] latlong)
     {
+        super(name);
         this.averageRating = averageRating;
-        this.name = name;
         this.imageID = imageID;
         ID = id;
         this.latlong[0] = latlong[0];
@@ -45,16 +44,6 @@ public class ToiletProfile extends Profile{
 
     public void setID(int ID) {
         this.ID = ID;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 
     public float getAverageRating() {
