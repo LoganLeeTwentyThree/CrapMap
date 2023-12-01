@@ -36,51 +36,6 @@ public class MapActivity extends AppCompatActivity implements View.OnTouchListen
         {
             set = true;
         }
-//
-//        ToiletList toiletList = new ToiletList(this);
-//        for(ToiletProfile toilet : toiletList.getToiletList())
-//        {
-//            if(toilet.getLatlong()[0] != 0)
-//            {
-//                ImageView pin = new ImageView(this);
-//                pin.setImageResource(R.drawable._85px_google_maps_pin_svg__2_);
-//
-//                ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(
-//                        ViewGroup.LayoutParams.WRAP_CONTENT,
-//                        ViewGroup.LayoutParams.WRAP_CONTENT
-//                );
-//
-//
-//                pin.setLayoutParams(params);
-//                ConstraintLayout root = findViewById(R.id.mapRoot);
-//                //pin.setId();
-//                root.addView(pin);
-//
-//                ConstraintLayout constraintLayout = findViewById(R.id.mapRoot);
-//                ConstraintSet constraintSet = new ConstraintSet();
-//                constraintSet.clone(constraintLayout);
-//                constraintSet.connect(pin.getId(),ConstraintSet.LEFT,R.id.mapRoot,ConstraintSet.RIGHT,(int)toilet.getLatlong()[0]);
-//                constraintSet.connect(pin.getId(),ConstraintSet.TOP,R.id.mapRoot,ConstraintSet.TOP,(int)toilet.getLatlong()[1]);
-//                constraintSet.applyTo(constraintLayout);
-//            }
-//        }
-
-
-
-//        ArrayList<ArrayList<Float>> locations = new ArrayList<ArrayList<Float>>();
-//        ArrayList<Float> testlocation = new ArrayList<Float>();
-//        testlocation.add(0,1.0f);
-//        testlocation.add(1,1.0f);
-//        locations.add(testlocation);
-//        testlocation = new ArrayList<Float>();
-//        testlocation.add(0,10.0f);
-//        testlocation.add(1,10.0f);
-//        locations.add(testlocation);
-//        testlocation = new ArrayList<Float>();
-//        testlocation.add(0,100.0f);
-//        testlocation.add(1,100.0f);
-//        locations.add(testlocation);
-//        loadPins(locations);
 
         ToiletList toiletlist = new ToiletList(this);
         loadPins(toiletlist.getToiletList());

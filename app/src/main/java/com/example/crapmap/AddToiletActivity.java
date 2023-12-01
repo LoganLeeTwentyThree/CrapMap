@@ -109,44 +109,45 @@ public class AddToiletActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-        private void saveNewToilet()
-        {
+    //called from oncreate when data is passed back from map view
+    private void saveNewToilet()
+    {
 
 
-            int id = (int)getIntent().getExtras().get("ID");
-            float ratingNum = (float)getIntent().getExtras().get("Rating");
-            String review = getIntent().getExtras().get("Review").toString();
-            float x = (float)getIntent().getExtras().get("X");
-            float y = (float)getIntent().getExtras().get("Y");
+        int id = (int)getIntent().getExtras().get("ID");
+        float ratingNum = (float)getIntent().getExtras().get("Rating");
+        String review = getIntent().getExtras().get("Review").toString();
+        float x = (float)getIntent().getExtras().get("X");
+        float y = (float)getIntent().getExtras().get("Y");
 
-            String name = getIntent().getExtras().get("Name").toString();
+        String name = getIntent().getExtras().get("Name").toString();
 
-            ToiletProfile newToilet = new ToiletProfile(
-                    R.drawable.chisholm_hall_855,
-                    id,
-                    name,
-                    ratingNum,
-                    new float[]{x,y}
-            );
+        ToiletProfile newToilet = new ToiletProfile(
+                R.drawable.chisholm_hall_855,
+                id,
+                name,
+                ratingNum,
+                new float[]{x,y}
+        );
 
-            ToiletList toiletList = new ToiletList(this);
+        ToiletList toiletList = new ToiletList(this);
 
-            toiletList.addToiletToCSV(newToilet);
+        toiletList.addToiletToCSV(newToilet);
 
-            RatingList ratingList = new RatingList(this);
-            Rating rating = new Rating(
-                    UserProfile.getCurrentUser(),
-                    newToilet,
-                    ratingNum,
-                    review
-            );
-            ratingList.addRatingToCSV(rating);
+        RatingList ratingList = new RatingList(this);
+        Rating rating = new Rating(
+                UserProfile.getCurrentUser(),
+                newToilet,
+                ratingNum,
+                review
+        );
+        ratingList.addRatingToCSV(rating);
 
-            Intent intent = new Intent(this, ToiletListActivity.class);
-            startActivity(intent);
+        Intent intent = new Intent(this, ToiletListActivity.class);
+        startActivity(intent);
 
 
 
-        }
+    }
 
 }

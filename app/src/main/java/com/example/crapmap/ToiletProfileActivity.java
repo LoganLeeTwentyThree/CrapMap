@@ -32,8 +32,8 @@ import com.example.crapmap.model.ToiletProfile;
 
 public class ToiletProfileActivity  extends AppCompatActivity {
 
-    int currentToiletID;
-    ToiletProfile currentToilet;
+    private int currentToiletID;
+    private ToiletProfile currentToilet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

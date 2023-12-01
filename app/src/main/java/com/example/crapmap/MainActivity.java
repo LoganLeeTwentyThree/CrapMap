@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //checks all lists on first run
     private void initializeLists()
     {
         Log.d("MainActivity.java", "init_lists: 1");
