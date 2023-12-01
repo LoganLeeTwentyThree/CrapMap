@@ -1,22 +1,18 @@
 package com.example.crapmap;
 
 import androidx.appcompat.app.AppCompatActivity;
-import java.io.IOException;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 
-import com.example.crapmap.R;
 import com.example.crapmap.model.NotFoundException;
 import com.example.crapmap.model.UserList;
 import com.example.crapmap.model.UserProfile;
 
-public class accountLogin extends AppCompatActivity implements View.OnClickListener {
+public class AccountLoginActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +41,7 @@ public class accountLogin extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
 
         if( view.getTag().equals("addNew") ) {
-            Intent intent = new Intent(this, accountSignup.class);
+            Intent intent = new Intent(this, AccountSignupActivity.class);
             startActivity(intent);
         }else if (view.getTag().equals("userButton"))
         {

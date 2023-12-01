@@ -9,10 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.crapmap.model.Rating;
 import com.example.crapmap.model.RatingList;
 import com.example.crapmap.model.ToiletList;
-import com.example.crapmap.model.ToiletProfile;
 import com.example.crapmap.model.UserList;
 import com.example.crapmap.model.UserProfile;
 
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         userSelectButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("MainActivity.java", "clicked userSelectButton");
-                 Intent intent = new Intent(MainActivity.this, accountLogin.class);
+                 Intent intent = new Intent(MainActivity.this, AccountLoginActivity.class);
                 startActivity(intent);
             }
         });

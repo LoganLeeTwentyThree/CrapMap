@@ -2,10 +2,6 @@ package com.example.crapmap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,7 +11,7 @@ import com.example.crapmap.model.NotFoundException;
 import com.example.crapmap.model.UserList;
 import com.example.crapmap.model.UserProfile;
 
-public class accountSignup extends AppCompatActivity implements View.OnClickListener {
+public class AccountSignupActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

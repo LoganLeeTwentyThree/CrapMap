@@ -16,7 +16,7 @@
             android:name=".MapActivity"
             android:exported="false" />
         <activity
-            android:name=".accountSignup"
+            android:name=".AccountSignupActivity"
             android:exported="false" />
         <activity
             android:name=".UserProfileActivity"
@@ -28,7 +28,7 @@
             android:name=".ToiletListActivity"
             android:exported="false" />
         <activity
-            android:name=".accountLogin"
+            android:name=".AccountLoginActivity"
             android:exported="false" />
         <activity
             android:name=".ToiletProfileActivity"
